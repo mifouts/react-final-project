@@ -5,8 +5,10 @@ import Nav from "./pages/Nav";
 function App() {
   return (
     <div className="App">
-      <Nav />
-      <Landing />
+      <body className="img__placeholder">
+        <Nav />
+        <Landing />
+      </body>
     </div>
   );
 }
