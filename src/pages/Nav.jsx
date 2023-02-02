@@ -10,7 +10,6 @@ function Nav() {
             <img
               src="./assets/movieflix logo.png"
               className="nav__logo nav__click"
-              onClick={"/"}
               alt=""
             />
           </a>
