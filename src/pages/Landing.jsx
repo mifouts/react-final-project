@@ -1,13 +1,16 @@
 import React from "react";
 import "./Landing.css";
+import { Link } from "react-router-dom";
 
 function Landing() {
   return (
     <div>
       <div class="container landing__container">
-        <h1 class="movieflix__title click">
-          <span class="red">MOVIEFLIX</span>
-        </h1>
+        <Link to={"/"}>
+          <h1 class="movieflix__title click">
+            <span class="red">MOVIEFLIX</span>
+          </h1>
+        </Link>
         <h3 class="movieflix__description click">
           Find the perfect movie for you!
         </h3>
