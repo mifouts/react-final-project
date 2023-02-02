@@ -16,20 +16,20 @@ function Landing() {
         </h3>
         <form
           className="movieflix__search"
-          onchange="loadingMovies(event)"
-          onsubmit="searchBarForm(event)"
+          onChange="loadingMovies(event)"
+          onSubmit="searchBarForm(event)"
         >
           <input
             type="text"
             className="movieflix__input"
             placeholder="Movie Name"
-            onchange="searchBarForm(event)"
+            onChange="searchBarForm(event)"
             autofocus
           />
           <button
             className="submit__button nav__click"
             type="submit"
-            onclick="searchBarForm(event)"
+            onClick="searchBarForm(event)"
           >
             <i className="fa-solid fa-magnifying-glass search"></i>
           </button>
