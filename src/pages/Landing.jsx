@@ -1,6 +1,7 @@
 import React from "react";
 import "./Landing.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Landing() {
   const moviesContainerEl = document.querySelector(".movies__container");
@@ -17,7 +18,7 @@ function Landing() {
 
   async function searchBarForm(event) {
     const formValue = event.target.value;
-    const movie = await fetch(
+    const movie = await axios.get(
       `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
     );
 
