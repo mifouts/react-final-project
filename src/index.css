@@ -27,7 +27,7 @@ html {
 }
 
 .click {
-  cursor: not-allowed;
+  cursor: pointer;
   transition: all 300ms ease;
 }
 
