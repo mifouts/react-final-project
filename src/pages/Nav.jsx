@@ -1,5 +1,6 @@
 import React from "react";
 import "./Nav.css";
+import NavImage from "./assets/movieflix logo.png";
 
 function Nav() {
   return (
@@ -7,11 +8,7 @@ function Nav() {
       <nav>
         <figure>
           <a href="/">
-            <img
-              src="./assets/movieflix logo.png"
-              className="nav__logo nav__click"
-              alt=""
-            />
+            <img src={NavImage} className="nav__logo nav__click" alt="" />
           </a>
         </figure>
         <ul className="nav__link--list">
