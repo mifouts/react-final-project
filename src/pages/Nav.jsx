@@ -1,6 +1,6 @@
 import React from "react";
 import "./Nav.css";
-import NavImage from "./assets/movieflix logo.png";
+import NavImage from "../assets/movieflix logo.png";
 
 function Nav() {
   return (
