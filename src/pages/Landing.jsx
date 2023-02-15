@@ -15,7 +15,7 @@ function Landing() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const movie = await axios.get(
+    const movie = await fetch(
       `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
     );
     const data = await movie.json();
