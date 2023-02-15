@@ -7,18 +7,26 @@ function Landing() {
   const [formValue, setFormValue] = useState("");
   const [movies, setMovies] = useState({});
   const [showMovies, setShowMovies] = useState(false);
+  const moviesContainerEl = document.querySelector(".movies__container");
+  const landingContainerEl = document.querySelector(".landing__container");
 
   const handleChange = (event) => {
     setFormValue(event.target.value);
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
     const movie = await fetch(
       `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
     );
-    const data = await movie.json();
-    setMovies(data);
+    const movieData = await movie.json();
+    if (!movieData.Search) {
+      moviesContainerEl.style.display = "none";
+      landingContainerEl.style.display = "block";
+    } else if (movieData.Search) {
+      moviesContainerEl.style.display = "flex";
+      landingContainerEl.style.display = "none";
+    }
+    setMovies(movieData);
   };
 
   useEffect(() => {
