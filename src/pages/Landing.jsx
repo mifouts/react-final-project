@@ -1,21 +1,33 @@
 import React, { useEffect, useState } from "react";
 import "./Landing.css";
 import axios from "axios";
+import Movie from "./Movie";
 
 function Landing() {
-  const [movies, setMovies] = useState([]);
+  const [formValue, setFormValue] = useState("");
+  const [movies, setMovies] = useState({});
+  const [showMovies, setShowMovies] = useState(false);
 
-  async function getMovies(event) {
-    const formValue = event.target.value;
-    const { data } = await axios.get(
+  const handleChange = (event) => {
+    setFormValue(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const movie = await axios.get(
       `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
     );
+    const data = await movie.json();
     setMovies(data);
-  }
+  };
 
   useEffect(() => {
-    getMovies();
-  }, []);
+    if (movies.Search) {
+      setShowMovies(true);
+    } else {
+      setShowMovies(false);
+    }
+  }, [movies]);
 
   return (
     <div>
@@ -26,19 +38,27 @@ function Landing() {
         <h3 className="movieflix__description click">
           Find the perfect movie for you!
         </h3>
-        <form className="movieflix__search" /*onChange={""} onSubmit={""}*/>
+        <form className="movieflix__search" onSubmit={handleSubmit}>
           <input
             type="text"
             className="movieflix__input"
             placeholder="Movie Name"
-            /*onChange={""}*/
+            onChange={handleChange}
+            value={formValue}
           />
           <button
             className="submit__button nav__click"
             type="submit"
-            /*onClick={""}*/
+            onClick={handleSubmit}
           ></button>
         </form>
+        {showMovies && (
+          <div>
+            {movies.Search.slice(0, 6).map((movie) => (
+              <Movie movie={movie} key={movie.imdbID} />
+            ))}
+          </div>
+        )}
         <div className="movie__overlay movie__overlay--loading">
           <i className="fas fa-spinner"></i>
         </div>
