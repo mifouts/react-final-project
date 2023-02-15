@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Landing.css";
 import axios from "axios";
 import Movie from "./Movie";
+import SearchIcon from "@mui/icons-material/Search";
 
 function Landing() {
   const [formValue, setFormValue] = useState("");
@@ -50,7 +51,9 @@ function Landing() {
             className="submit__button nav__click"
             type="submit"
             onClick={handleSubmit}
-          ></button>
+          >
+            <SearchIcon />
+          </button>
         </form>
         {showMovies && (
           <div>
