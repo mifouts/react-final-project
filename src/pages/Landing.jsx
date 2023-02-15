@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Landing.css";
-import axios from "axios";
 import Movie from "./Movie";
 import SearchIcon from "@mui/icons-material/Search";
 
