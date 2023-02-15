@@ -16,8 +16,8 @@ function Landing() {
     const movie = await fetch(
       `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
     );
-    const movieData = await movie.json();
-    setMovies(movieData);
+    const data = await movie.json();
+    setMovies(data);
   };
 
   useEffect(() => {
