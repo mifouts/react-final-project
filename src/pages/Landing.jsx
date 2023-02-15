@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Landing.css";
 import axios from "axios";
-import SearchIcon from "@mui/icons-material/Search";
 
 function Landing() {
   const [movies, setMovies] = useState([]);
@@ -38,9 +37,7 @@ function Landing() {
             className="submit__button nav__click"
             type="submit"
             /*onClick={""}*/
-          >
-            <SearchIcon />
-          </button>
+          ></button>
         </form>
         <div className="movie__overlay movie__overlay--loading">
           <i className="fas fa-spinner"></i>
