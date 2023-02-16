@@ -18,6 +18,7 @@ function Landing() {
     );
     const data = await movie.json();
     setMovies(data);
+    event.preventDefault();
   };
 
   useEffect(() => {
