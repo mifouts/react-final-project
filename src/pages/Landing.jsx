@@ -55,7 +55,7 @@ function Landing() {
         </form>
         {showMovies && (
           <div>
-            {movies.Search?.slice(0, 6).map((movie) => (
+            {movies.Search.slice(0, 6).map((movie) => (
               <Movie movie={movie} key={movie.imdbID} />
             ))}
           </div>
