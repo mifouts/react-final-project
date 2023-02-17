@@ -7,8 +7,6 @@ function Landing() {
   const [formValue, setFormValue] = useState("");
   const [movies, setMovies] = useState({});
   const [showMovies, setShowMovies] = useState(false);
-  const moviesContainerEl = document.querySelector(".movies__container");
-  const landingContainerEl = document.querySelector(".landing__container");
 
   const handleChange = (event) => {
     setFormValue(event.target.value);
@@ -21,13 +19,6 @@ function Landing() {
     );
     const data = await movie.json();
     setMovies(data);
-    if (!data.Search) {
-      moviesContainerEl.style.display = "none";
-      landingContainerEl.style.display = "block";
-    } else if (data.Search) {
-      moviesContainerEl.style.display = "flex";
-      landingContainerEl.style.display = "none";
-    }
   };
 
   useEffect(() => {

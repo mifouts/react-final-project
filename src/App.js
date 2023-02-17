@@ -15,14 +15,10 @@ function App() {
     backgroundRepeat: "no-repeat",
   };
   return (
-    <Router>
-      <div className="App" style={myStyle}>
-        <Routes>
-          <Nav />
-          <Landing />
-        </Routes>
-      </div>
-    </Router>
+    <div className="App" style={myStyle}>
+      <Nav />
+      <Landing />
+    </div>
   );
 }
 
