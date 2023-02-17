@@ -2,6 +2,7 @@ import "./App.css";
 import Landing from "./pages/Landing";
 import Nav from "./pages/Nav";
 import background from "./assets/backgroundimg.png";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const myStyle = {
@@ -14,10 +15,14 @@ function App() {
     backgroundRepeat: "no-repeat",
   };
   return (
-    <div className="App" style={myStyle}>
-      <Nav />
-      <Landing />
-    </div>
+    <Router>
+      <div className="App" style={myStyle}>
+        <Routes>
+          <Nav />
+          <Landing />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
