@@ -3,7 +3,7 @@ import "./Movie.css";
 
 function Movie({ movie }) {
   return (
-    <div className="movie__container">
+    <div className="movie__container click">
       <div className="movie">
         <div className="movie__poster">
           <img src={movie.Poster} className="movie__poster--img" alt="" />
