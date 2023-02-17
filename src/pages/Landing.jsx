@@ -38,7 +38,7 @@ function Landing() {
         <h3 className="movieflix__description click">
           Find the perfect movie for you!
         </h3>
-        <form className="movieflix__search" onSubmit={handleSubmit}>
+        <form className="movieflix__search" onSubmit={(e) => handleSubmit(e)}>
           <input
             type="text"
             className="movieflix__input"
@@ -49,7 +49,7 @@ function Landing() {
           <button
             className="submit__button nav__click"
             type="submit"
-            onClick={handleSubmit}
+            onClick={(e) => handleSubmit(e)}
           >
             <SearchIcon />
           </button>
