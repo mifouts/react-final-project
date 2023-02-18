@@ -14,6 +14,7 @@ function Landing() {
   };
 
   const handleSubmit = async (event) => {
+    setLoading(true);
     event.preventDefault();
     const movie = await fetch(
       `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
@@ -23,7 +24,6 @@ function Landing() {
   };
 
   useEffect(() => {
-    setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2000);
