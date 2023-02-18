@@ -13,27 +13,29 @@ function Landing() {
     setFormValue(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
-    setLoading(true);
-    event.preventDefault();
-    const movie = await fetch(
-      `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
-    );
-    const data = await movie.json();
-    setMovies(data);
-  };
-
   useEffect(() => {
-    setTimeout(() => {
+    const handleSubmit = async (event) => {
+      setLoading(true);
+      event.preventDefault();
+      const movie = await fetch(
+        `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
+      );
+      const data = await movie.json();
+      setMovies(data);
       setLoading(false);
-    }, 2000);
+    };
+
+    const timer = setTimeout(() => {
+      handleSubmit();
+    }, 5000);
 
     if (movies.Search) {
       setShowMovies(true);
     } else {
       setShowMovies(false);
     }
-  }, [movies]);
+    return () => clearTimeout(timer);
+  }, [movies, formValue]);
 
   return (
     <div>
