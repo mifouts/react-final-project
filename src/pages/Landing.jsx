@@ -20,10 +20,10 @@ function Landing() {
       `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
     );
     const data = await movie.json();
-    setMovies(data);
     setTimeout(() => {
       setLoading(false);
     }, 2000);
+    setMovies(data);
   };
 
   useEffect(() => {
