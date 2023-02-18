@@ -16,13 +16,13 @@ function Landing() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
     const movie = await fetch(
       `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
     );
     const data = await movie.json();
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
     setMovies(data);
   };
 
