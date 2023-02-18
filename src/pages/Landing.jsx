@@ -7,6 +7,7 @@ function Landing() {
   const [formValue, setFormValue] = useState("");
   const [movies, setMovies] = useState({});
   const [showMovies, setShowMovies] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     setFormValue(event.target.value);
@@ -14,11 +15,13 @@ function Landing() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const movie = await fetch(
       `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
     );
     const data = await movie.json();
     setMovies(data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -51,7 +54,14 @@ function Landing() {
             type="submit"
             onClick={(e) => handleSubmit(e)}
           >
-            <SearchIcon />
+            {" "}
+            {loading ? (
+              <>Loading..</>
+            ) : (
+              <>
+                <SearchIcon />
+              </>
+            )}
           </button>
         </form>
         {showMovies && (
