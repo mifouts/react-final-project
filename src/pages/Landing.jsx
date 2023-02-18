@@ -15,10 +15,6 @@ function Landing() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
     const movie = await fetch(
       `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
     );
@@ -27,6 +23,11 @@ function Landing() {
   };
 
   useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
     if (movies.Search) {
       setShowMovies(true);
     } else {
