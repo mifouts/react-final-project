@@ -13,29 +13,24 @@ function Landing() {
     setFormValue(event.target.value);
   };
 
+  const handleSubmit = async (event) => {
+    setLoading(true);
+    event.preventDefault();
+    const movie = await fetch(
+      `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
+    );
+    const data = await movie.json();
+    setMovies(data);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const handleSubmit = async (event) => {
-      setLoading(true);
-      event.preventDefault();
-      const movie = await fetch(
-        `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
-      );
-      const data = await movie.json();
-      setMovies(data);
-      setLoading(false);
-    };
-
-    const timer = setTimeout(() => {
-      handleSubmit();
-    }, 5000);
-
     if (movies.Search) {
       setShowMovies(true);
     } else {
       setShowMovies(false);
     }
-    return () => clearTimeout(timer);
-  }, [movies, formValue]);
+  }, [movies]);
 
   return (
     <div>
@@ -46,7 +41,7 @@ function Landing() {
         <h3 className="movieflix__description click">
           Find the perfect movie for you!
         </h3>
-        <form className="movieflix__search">
+        <form className="movieflix__search" onSubmit={(e) => handleSubmit(e)}>
           <input
             type="text"
             className="movieflix__input"
@@ -54,7 +49,11 @@ function Landing() {
             onChange={handleChange}
             value={formValue}
           />
-          <button className="submit__button nav__click" type="submit">
+          <button
+            className="submit__button nav__click"
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+          >
             {" "}
             {loading ? (
               <>Loading..</>
