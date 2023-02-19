@@ -5,7 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 function Landing() {
   const [movies, setMovies] = useState([]);
   const [formValue, setFormValue] = useState("");
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const handleSearch = async (event) => {
     event.preventDefault();
