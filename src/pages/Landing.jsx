@@ -11,9 +11,9 @@ function Landing() {
     setFormValue(event.target.value);
   };
 
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     event.preventDefault();
-    fetch(`https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`)
+    await fetch(`https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`)
       .then((response) => response.json())
       .then((data) => setMovies(data.slice(0, 6)))
       .finally(() => setLoading(false));
