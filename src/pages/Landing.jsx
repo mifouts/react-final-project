@@ -51,14 +51,14 @@ function Landing() {
                 <div className="movie">
                   <div className="movie__poster">
                     <img
-                      src={movie.poster}
+                      src={movie.Poster}
                       className="movie__poster--img"
                       alt=""
                     />
                   </div>
                   <div className="movie__info--container">
-                    <div className="movie__title">{movie.title}</div>
-                    <div className="movie__year">{movie.year}</div>
+                    <div className="movie__title">{movie.Title}</div>
+                    <div className="movie__year">{movie.Year}</div>
                   </div>
                 </div>
               </div>
