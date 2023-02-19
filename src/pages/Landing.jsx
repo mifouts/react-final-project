@@ -39,6 +39,8 @@ function Landing() {
             type="text"
             className="movieflix__input"
             placeholder="Movie Name"
+            id="formValue"
+            name="formValue"
             onChange={handleChange}
             value={formValue}
           />
