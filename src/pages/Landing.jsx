@@ -11,7 +11,8 @@ function Landing() {
     setFormValue(event.target.value);
   };
 
-  const handleSearch = () => {
+  const handleSearch = (event) => {
+    event.preventDefault();
     fetch(`https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`)
       .then((response) => response.json())
       .then((data) => setMovies(data.slice(0, 6)))
@@ -27,7 +28,7 @@ function Landing() {
         <h3 className="movieflix__description click">
           Find the perfect movie for you!
         </h3>
-        <form className="movieflix__search" onSubmit={handleSearch}>
+        <form className="movieflix__search" onSubmit={(e) => handleSearch(e)}>
           <input
             type="text"
             className="movieflix__input"
@@ -38,7 +39,7 @@ function Landing() {
           <button
             className="submit__button nav__click"
             type="submit"
-            onClick={handleSearch}
+            onClick={(e) => handleSearch(e)}
           >
             <SearchIcon />
           </button>
