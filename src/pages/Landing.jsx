@@ -40,7 +40,7 @@ function Landing() {
             type="submit"
             onClick={(e) => handleSearch(e)}
           >
-            <SearchIcon />
+            <SearchIcon className="searchIcon" />
           </button>
         </form>
         {loading && <div>Loading...</div>}

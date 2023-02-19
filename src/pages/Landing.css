@@ -148,3 +148,9 @@
 .movie__overlay--loading {
     font-size: 80px;
 }
+
+/* GENERAL */
+
+.searchIcon {
+  color: white;
+}
