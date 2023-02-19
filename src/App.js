@@ -7,7 +7,7 @@ function App() {
   const myStyle = {
     backgroundImage: `url(${background})`,
     backgroundPosition: "center",
-    height: "100vh",
+    height: "250vh",
     width: "100vw",
     marginTop: "0px",
     backgroundSize: "cover",
