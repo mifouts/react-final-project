@@ -10,10 +10,12 @@ function Landing() {
   const handleSearch = async (event) => {
     event.preventDefault();
     setLoading(true);
-    await fetch(`https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`)
-      .then((response) => response.json())
-      .then((data) => setMovies(data.Search.slice(0, 6)))
-      .finally(() => setLoading(false));
+    const response = await fetch(
+      `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
+    );
+    const data = await response.json();
+    setMovies(data.Search.slice(0, 6));
+    setLoading(false);
   };
 
   return (
