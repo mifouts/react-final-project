@@ -1,39 +1,29 @@
 import React, { useEffect, useState } from "react";
 import "./Landing.css";
-import Movie from "./Movie";
 import SearchIcon from "@mui/icons-material/Search";
 
 function Landing() {
+  const [movies, setMovies] = useState([]);
   const [formValue, setFormValue] = useState("");
-  const [movies, setMovies] = useState({});
-  const [showMovies, setShowMovies] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     setFormValue(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
-    setLoading(true);
-    event.preventDefault();
-    const movie = await fetch(
-      `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
-    );
-    const data = await movie.json();
-    setMovies(data);
-    setLoading(false);
-    setTimeout(() => {
-      handleSubmit(event);
-    }, 2000);
-  };
-
   useEffect(() => {
-    if (movies.Search) {
-      setShowMovies(true);
-    } else {
-      setShowMovies(false);
-    }
-  }, [movies]);
+    fetch(`https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`)
+      .then((response) => response.json())
+      .then((data) => setMovies(data.slice(0, 6)))
+      .catch((error) => console.error(error));
+  }, [formValue]);
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const input = form.elements.formValue;
+    setFormValue(input.value);
+    input.value = "";
+  };
 
   return (
     <div>
@@ -44,7 +34,7 @@ function Landing() {
         <h3 className="movieflix__description click">
           Find the perfect movie for you!
         </h3>
-        <form className="movieflix__search" onSubmit={(e) => handleSubmit(e)}>
+        <form className="movieflix__search" onSubmit={(e) => handleSearch(e)}>
           <input
             type="text"
             className="movieflix__input"
@@ -55,28 +45,34 @@ function Landing() {
           <button
             className="submit__button nav__click"
             type="submit"
-            onClick={(e) => handleSubmit(e)}
+            onClick={(e) => handleSearch(e)}
           >
-            {" "}
-            {loading ? (
-              <>Loading..</>
-            ) : (
-              <>
-                <SearchIcon />
-              </>
-            )}
+            <SearchIcon />
           </button>
         </form>
-        {showMovies && (
-          <div>
-            {movies.Search.slice(0, 6).map((movie) => (
-              <Movie movie={movie} key={movie.imdbID} />
+        {movies.length === 0 ? (
+          <div>Loading...</div>
+        ) : (
+          <div className="movies__container">
+            {movies.map((movie) => (
+              <div className="movie__container click">
+                <div className="movie">
+                  <div className="movie__poster">
+                    <img
+                      src={movie.poster}
+                      className="movie__poster--img"
+                      alt=""
+                    />
+                  </div>
+                  <div className="movie__info--container">
+                    <div className="movie__title">{movie.title}</div>
+                    <div className="movie__year">{movie.year}</div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         )}
-        <div className="movie__overlay movie__overlay--loading">
-          <i className="fas fa-spinner"></i>
-        </div>
       </div>
     </div>
   );
