@@ -22,6 +22,9 @@ function Landing() {
     const data = await movie.json();
     setMovies(data);
     setLoading(false);
+    setTimeout(() => {
+      handleSubmit();
+    }, 2000);
   };
 
   useEffect(() => {
