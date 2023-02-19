@@ -7,10 +7,6 @@ function Landing() {
   const [formValue, setFormValue] = useState("");
   const [loading, setLoading] = useState("");
 
-  const handleChange = (event) => {
-    setFormValue(event.target.value);
-  };
-
   const handleSearch = async (event) => {
     event.preventDefault();
     await fetch(`https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`)
@@ -33,7 +29,7 @@ function Landing() {
             type="text"
             className="movieflix__input"
             placeholder="Movie Name"
-            onChange={handleChange}
+            onChange={(e) => setFormValue(e.target.value)}
             value={formValue}
           />
           <button
