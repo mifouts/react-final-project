@@ -12,7 +12,7 @@ function Landing() {
     setLoading(true);
     await fetch(`https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`)
       .then((response) => response.json())
-      .then((data) => setMovies(data.slice(0, 6)))
+      .then((data) => setMovies(data.Search.slice(0, 6)))
       .finally(() => setLoading(false));
   };
 
