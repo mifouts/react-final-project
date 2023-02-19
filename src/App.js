@@ -1,7 +1,7 @@
 import "./App.css";
 import Landing from "./pages/Landing";
 import Nav from "./pages/Nav";
-import background from "./assets/backgroundimg.png";
+import background from "./assets/newbackground-transformed.png";
 
 function App() {
   const myStyle = {
@@ -10,7 +10,7 @@ function App() {
     height: "100vh",
     width: "100vw",
     marginTop: "0px",
-    backgroundSize: "contain",
+    backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   };
   return (
