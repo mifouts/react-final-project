@@ -48,7 +48,7 @@ function Landing() {
           <div className="movies__container">
             {movies.map((movie) => (
               <div
-                className="movie__container click"
+                className="movie__container"
                 onClick={() => setSelectedMovie(movie)}
               >
                 <div className="movie">
