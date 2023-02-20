@@ -67,6 +67,10 @@ button {
   cursor: pointer;
 }
 
+.no__cursor {
+  cursor: not-allowed;
+}
+
 .container {
   padding: 50px 0;
   width: 100%;

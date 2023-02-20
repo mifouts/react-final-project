@@ -25,7 +25,7 @@ function Nav() {
           <li className="nav__link">
             <a
               href="mailto:movies@movieflix.com"
-              className="nav__link--anchor click"
+              className="nav__link--anchor click no__cursor"
             >
               Contact
             </a>
