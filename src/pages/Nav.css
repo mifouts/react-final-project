@@ -30,7 +30,7 @@ nav {
     justify-content: center;
     align-items: center;
     border-radius: 9999px;
-    border: solid rgb(68, 15, 15);
+    border: solid red;
     padding: 12px 32px;
-    background-color: rgb(68, 15, 15);
+    background-color: red;
 }

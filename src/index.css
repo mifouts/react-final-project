@@ -83,12 +83,7 @@ button {
   color: red;
 }
 
-.img__placeholder {
-  background-repeat: no-repeat;
-background-size: 100vw 400vh;
-background-color: white;
-background-image: url(./assets/backgroundimg.png)
-}
+
 
 body {
   margin: 0;
@@ -102,4 +97,31 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* RESPONSIVENESS */
+
+@media (max-width: 3000px) {
+  .movie__container{
+      width: calc(100% / 3);
+  }
+}
+
+@media (max-width: 1200px) {
+  .movie__container{
+      width: calc(100% / 2);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .nav__link--list {
+      display: none;
+  }
+
+  .movies__container {
+      flex-direction: column;
+     padding-right: 100px;
+  }
+
 }
