@@ -8,7 +8,7 @@ function Nav() {
       <nav>
         <figure>
           <a href="/">
-            <img src={NavImage} className="nav__logo nav__click" alt="" />
+            <img src={NavImage} className="nav__logo click" alt="" />
           </a>
         </figure>
         <ul className="nav__link--list">
@@ -25,7 +25,7 @@ function Nav() {
           <li className="nav__link">
             <a
               href="mailto:movies@movieflix.com"
-              className="nav__link--anchor click no__cursor"
+              className="nav__link--anchor no__cursor"
             >
               Contact
             </a>
