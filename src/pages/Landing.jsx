@@ -48,7 +48,8 @@ function Landing() {
           <div className="movies__container">
             {movies.map((movie) => (
               <div
-                className="movie__container"
+                className="movie__container click"
+                key={movie.imdbID}
                 onClick={() => setSelectedMovie(movie)}
               >
                 <div className="movie">
