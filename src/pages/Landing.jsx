@@ -43,7 +43,6 @@ function Landing() {
             <SearchIcon className="searchIcon" />
           </button>
         </form>
-        {loading && <div>Loading...</div>}
         {!loading && (
           <div className="movies__container">
             {movies.map((movie) => (
