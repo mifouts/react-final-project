@@ -2,6 +2,7 @@ import "./App.css";
 import Landing from "./pages/Landing";
 import Nav from "./pages/Nav";
 import background from "./assets/newbackground-transformed.png";
+import "./index.css";
 
 function App() {
   const myStyle = {
