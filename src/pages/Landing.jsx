@@ -11,7 +11,7 @@ function Landing(props) {
   const { movie } = props;
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleClick = (movie) => {
     navigate(`/movies/${movie.imdbID}`);
   };
 
