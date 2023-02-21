@@ -46,18 +46,28 @@ function SelectedMovie() {
               className="selected__movie--poster-img"
             />
           </div>
-          <h2 className="selectedMovie__title">{selectedMovie.Title}</h2>
-          <h3 className="selectedMovie__year">{selectedMovie.Year}</h3>
-          {selectedMovie.Rated ? (
-            <h4 className="selectedMovie__rating">{selectedMovie.Rated}</h4>
-          ) : (
-            <p className="selectedMovie__unavailable">Rating not available</p>
-          )}
-          {selectedMovie.Plot ? (
-            <p className="selectedMovie__plot">{selectedMovie.Plot}</p>
-          ) : (
-            <p className="selectedMovie__unavailable">Plot not available</p>
-          )}
+          <div className="selected__movie--text-container">
+            <h2 className="selectedMovie__title text-color">
+              {selectedMovie.Title}
+            </h2>
+            <h3 className="selectedMovie__year text-color">
+              {selectedMovie.Year}
+            </h3>
+            {selectedMovie.Rated ? (
+              <h4 className="selectedMovie__rating text-color">
+                {selectedMovie.Rated}
+              </h4>
+            ) : (
+              <p className="selectedMovie__unavailable">Rating not available</p>
+            )}
+            {selectedMovie.Plot ? (
+              <p className="selectedMovie__plot text-color">
+                {selectedMovie.Plot}
+              </p>
+            ) : (
+              <p className="selectedMovie__unavailable">Plot not available</p>
+            )}
+          </div>
         </div>
       )}
     </div>

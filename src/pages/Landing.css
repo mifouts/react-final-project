@@ -151,7 +151,22 @@
 
 /* Selected Movie */
 
+.text-color {
+  color: white;
+}
 
+.selected__movie--text-container {
+  padding: 20px;
+  line-height: 1.5;
+}
+
+.selected__movie--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 60px;
+}
 
 /* GENERAL */
 
