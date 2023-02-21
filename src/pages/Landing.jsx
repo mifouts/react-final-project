@@ -1,25 +1,29 @@
 import React, { useState } from "react";
 import "./Landing.css";
 import SearchIcon from "@mui/icons-material/Search";
+import { useNavigate } from "react-router-dom";
 
 function Landing() {
   const [movies, setMovies] = useState([]);
   const [formValue, setFormValue] = useState("");
   const [loading, setLoading] = useState(true);
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const handleSearch = async (event) => {
     event.preventDefault();
     setLoading(true);
-    const response = await fetch(
-      `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
-    );
-    const data = await response.json();
-    setMovies(data.Search.slice(0, 6));
-    setLoading(false);
+    try {
+      const response = await fetch(
+        `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
+      );
+      const data = await response.json();
+      setMovies(data.Search.slice(0, 6));
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  console.log(selectedMovie);
+  const Navigate = useNavigate();
 
   return (
     <div>
@@ -52,7 +56,7 @@ function Landing() {
               <div
                 className="movie__container click"
                 key={movie.imdbID}
-                onClick={() => setSelectedMovie(movie)}
+                onClick={() => Navigate(`/movies/${movie.imdbID}`)}
               >
                 <div className="movie">
                   <div className="movie__poster">
@@ -69,29 +73,6 @@ function Landing() {
                 </div>
               </div>
             ))}
-          </div>
-        )}
-        {selectedMovie && (
-          <div className="selected__movie--container">
-            <div className="selected__movie--poster">
-              <img
-                src={selectedMovie.Poster}
-                alt=""
-                className="selected__movie--poster-img"
-              />
-            </div>
-            <h2 className="selectedMovie__title">{selectedMovie.Title}</h2>
-            <h3 className="selectedMovie__year">{selectedMovie.Year}</h3>
-            {selectedMovie.Rated ? (
-              <h4 className="selectedMovie__rating">{selectedMovie.Rated}</h4>
-            ) : (
-              <p className="selectedMovie__unavailable">Rating not available</p>
-            )}
-            {selectedMovie.Plot ? (
-              <p className="selectedMovie__plot">{selectedMovie.Plot}</p>
-            ) : (
-              <p className="selectedMovie__unavailable">Plot not available</p>
-            )}
           </div>
         )}
       </div>
