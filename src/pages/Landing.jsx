@@ -8,7 +8,6 @@ function Landing(props) {
   const [formValue, setFormValue] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const { movie } = props;
   const navigate = useNavigate();
 
   const handleClick = (movie) => {
