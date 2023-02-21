@@ -25,7 +25,7 @@ function App() {
         <Nav />
         <Landing setSelectedMovie={setSelectedMovie} />
         <Routes>
-          <Route path="/movies/:id" component={SelectedMovie} />
+          <Route path="/movies/:imdbID" component={SelectedMovie} />
         </Routes>
       </div>
     </Router>

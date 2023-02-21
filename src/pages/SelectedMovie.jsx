@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function SelectedMovie() {
-  const { id } = useParams();
+  const { imdbID } = useParams();
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +11,7 @@ function SelectedMovie() {
     const fetchSelectedMovie = async () => {
       try {
         const response = await fetch(
-          `https://www.omdbapi.com/?apikey=3c851f46&i=${id}`
+          `https://www.omdbapi.com/?apikey=3c851f46&i=${imdbID}`
         );
         const data = await response.json();
         setSelectedMovie(data);
@@ -22,7 +22,7 @@ function SelectedMovie() {
       }
     };
     fetchSelectedMovie();
-  }, [id]);
+  }, [imdbID]);
 
   if (isLoading) {
     return <div>Loading...</div>;
