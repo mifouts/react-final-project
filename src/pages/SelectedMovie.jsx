@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function SelectedMovie(props) {
+function SelectedMovie() {
   const { id } = useParams();
-  const { selectedMovie } = props;
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchSelectedMovie = async () => {
+      try {
+        const response = await fetch(
+          `https://www.omdbapi.com/?apikey=3c851f46&i=${id}`
+        );
+        const data = await response.json();
+        setSelectedMovie(data);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error);
+        setIsLoading(false);
+      }
+    };
+    fetchSelectedMovie();
+  }, [id]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!selectedMovie) {
+    return <div>No movie found.</div>;
+  }
   return (
     <div>
       {selectedMovie && (

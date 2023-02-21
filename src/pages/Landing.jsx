@@ -3,27 +3,28 @@ import "./Landing.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
 
-function Landing() {
+function Landing(props) {
   const [movies, setMovies] = useState([]);
   const [formValue, setFormValue] = useState("");
   const [loading, setLoading] = useState(true);
 
+  const { movie } = props;
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/movies/${movie.imdbID}`);
+  };
+
   const handleSearch = async (event) => {
     event.preventDefault();
     setLoading(true);
-    try {
-      const response = await fetch(
-        `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
-      );
-      const data = await response.json();
-      setMovies(data.Search.slice(0, 6));
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await fetch(
+      `https://www.omdbapi.com/?apikey=3c851f46&s=${formValue}`
+    );
+    const data = await response.json();
+    setMovies(data.Search.slice(0, 6));
+    setLoading(false);
   };
-
-  const Navigate = useNavigate();
 
   return (
     <div>
@@ -56,7 +57,7 @@ function Landing() {
               <div
                 className="movie__container click"
                 key={movie.imdbID}
-                onClick={() => Navigate(`/movies/${movie.imdbID}`)}
+                onClick={handleClick}
               >
                 <div className="movie">
                   <div className="movie__poster">
