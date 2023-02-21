@@ -57,7 +57,7 @@ function Landing(props) {
               <div
                 className="movie__container click"
                 key={movie.imdbID}
-                onClick={handleClick}
+                onClick={() => handleClick(movie)}
               >
                 <div className="movie">
                   <div className="movie__poster">
