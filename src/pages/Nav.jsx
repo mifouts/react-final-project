@@ -4,7 +4,7 @@ import NavImage from "../assets/movieflix logo.png";
 
 function Nav() {
   return (
-    <div className="nav_container">
+    <div className="nav__container">
       <nav>
         <figure>
           <a href="/">
